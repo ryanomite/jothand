@@ -1,0 +1,211 @@
+(* ============================================================= *)
+(*  Jothand Formal Grammar                                       *)
+(*  Extended Backus-Naur Form (ISO/IEC 14977)                    *)
+(*                                                               *)
+(*  This grammar describes the structural rules of Jothand      *)
+(*  shorthand text. It does not resolve ambiguity — many tokens  *)
+(*  have multiple valid interpretations that are resolved by     *)
+(*  context at read time. See tokens.json for full token         *)
+(*  definitions and semantic notes.                              *)
+(* ============================================================= *)
+
+
+(* ------------------------------------------------------------- *)
+(*  Top-level structure                                           *)
+(* ------------------------------------------------------------- *)
+
+jothand-text   = segment , { sep , segment } ;
+
+(* Segments are separated by one or two spaces.                  *)
+(* Two spaces are used optionally for visual clarity.            *)
+sep             = " " | "  " ;
+
+
+(* ------------------------------------------------------------- *)
+(*  Segment types                                                 *)
+(*                                                               *)
+(*  A segment is one of:                                         *)
+(*    chain         — run of single-char word/phonetic tokens,   *)
+(*                    no spaces                                  *)
+(*    phonetic-word — compressed word using sound symbols        *)
+(*    plain-word    — ordinary English kept as-is                *)
+(*    lone-token    — a single chainable token used standalone   *)
+(*                                                               *)
+(*  NOTE: The grammar cannot syntactically distinguish a         *)
+(*  lone-token from the start of a phonetic-word in all cases.   *)
+(*  Interpretation is context-dependent (see Ambiguity section   *)
+(*  of README.md).                                               *)
+(* ------------------------------------------------------------- *)
+
+segment         = chain
+                | phonetic-word
+                | plain-word
+                | lone-token ;
+
+
+(* ------------------------------------------------------------- *)
+(*  Chains                                                        *)
+(*                                                               *)
+(*  A chain is 2 or more consecutive chainable tokens written    *)
+(*  without spaces. Each token must be exactly one character.    *)
+(*  Multi-character abbreviations (e.g. "lc", "hv") are not     *)
+(*  chainable and must be space-separated.                       *)
+(* ------------------------------------------------------------- *)
+
+chain           = chainable , chainable , { chainable } ;
+
+chainable       = word-abbrev | phonetic-subst ;
+
+
+(* ------------------------------------------------------------- *)
+(*  Word abbreviations (single-character, whole-word tokens)     *)
+(* ------------------------------------------------------------- *)
+
+word-abbrev     = "e"   (* the                          *)
+                | "u"   (* of                           *)
+                | "n"   (* in / on                      *)
+                | "'"   (* a / an                       *)
+                | "y"   (* you                          *)
+                | "s"   (* is / as                      *)
+                | "r"   (* or / our / hour              *)
+                | "ɑ"  (* at / that / they             *)
+                | "∀"  (* all / every / any quantity   *)
+                | "+"   (* and                          *)
+                | "&"   (* and (alternate)              *)
+                | "∅"  (* not / no / none              *)
+                | "!"   (* not (alternate)              *)
+                | "^"   (* not (alternate)              *)
+                ;
+
+
+(* ------------------------------------------------------------- *)
+(*  Phonetic / symbol substitutions (single-character)           *)
+(* ------------------------------------------------------------- *)
+
+phonetic-subst  = "1"   (* one                          *)
+                | "2"   (* to / two / too               *)
+                | "∠"  (* for / four                   *)
+                | "8"   (* ate / eight                  *)
+                | "#"   (* number                       *)
+                | "$"   (* money / dollar / cost        *)
+                | "%"   (* percent / percentage         *)
+                | "="   (* equal / equals               *)
+                | "~"   (* approximately / circa        *)
+                | ">"   (* greater / more than          *)
+                | "<"   (* less / fewer                 *)
+                ;
+
+
+(* ------------------------------------------------------------- *)
+(*  Phonetic words                                                *)
+(*                                                               *)
+(*  A phonetic word is a compressed form of a single English     *)
+(*  word. It consists of a sequence of phonemes, optionally      *)
+(*  prefixed or suffixed with written vowels (boundary vowels,   *)
+(*  written out for clarity per principle 9).                    *)
+(*                                                               *)
+(*  Pluralization: append "˙" (voiced s) to a phonetic word.    *)
+(* ------------------------------------------------------------- *)
+
+phonetic-word   = [ boundary-vowels ] , phoneme , { phoneme } , [ boundary-vowels ] , [ plural ] ;
+
+plural          = "˙" ;   (* voiced s; marks plural forms *)
+
+phoneme         = sound-sym | plain-consonant ;
+
+(* Jothand sound symbols *)
+sound-sym       = "⏐"  (* t — uncrossed t stroke          *)
+                | "t"   (* th — full crossed t             *)
+                | "⌒"  (* m — arched stroke               *)
+                | "◡"  (* w — wide inverted arch          *)
+                | "."   (* s (unvoiced) / hard c           *)
+                | "˙"  (* s (voiced) / soft s / plural    *)
+                | "c"   (* k / hard c                      *)
+                | "_"   (* n — wide underscore stroke      *)
+                | "("   (* ch                              *)
+                | ")"   (* sh                              *)
+                | ","   (* ing                             *)
+                | "+"   (* nd / nt blend                   *)
+                | "ɑ"  (* at sound                        *)
+                ;
+
+(* Standard consonants written as-is *)
+plain-consonant = "b" | "d" | "f" | "g" | "h" | "j" | "k" | "l"
+                | "m" | "n" | "p" | "q" | "v" | "x" | "z" ;
+
+(* Note: "q" is kept as-is (represents k+w in English);         *)
+(* it is not decomposed into c◡.                                 *)
+
+(* Vowels written at word boundaries for readability            *)
+boundary-vowels = vowel , { vowel } ;
+
+vowel           = "a" | "e" | "i" | "o" | "u" ;
+
+
+(* ------------------------------------------------------------- *)
+(*  Plain words                                                   *)
+(*                                                               *)
+(*  Ordinary English words kept as-is. Common for proper names,  *)
+(*  numerals, unusual words, or anywhere clarity matters.        *)
+(* ------------------------------------------------------------- *)
+
+plain-word      = letter , { letter | digit } ;
+
+letter          = "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h"
+                | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p"
+                | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x"
+                | "y" | "z"
+                | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H"
+                | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P"
+                | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X"
+                | "Y" | "Z" ;
+
+digit           = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7"
+                | "8" | "9" ;
+
+
+(* ------------------------------------------------------------- *)
+(*  Lone token                                                    *)
+(*                                                               *)
+(*  A single chainable token used as a standalone segment        *)
+(*  (not in a chain). Structurally identical to a chain of       *)
+(*  length 1; separated from adjacent segments by spaces.        *)
+(* ------------------------------------------------------------- *)
+
+lone-token      = chainable ;
+
+
+(* ------------------------------------------------------------- *)
+(*  Multi-character "and" form (not chainable)                   *)
+(* ------------------------------------------------------------- *)
+
+double-and      = "&&" ;   (* valid standalone token only *)
+
+
+(* ------------------------------------------------------------- *)
+(*  Prose punctuation                                             *)
+(*                                                               *)
+(*  Only ! and ? are safe to use as prose punctuation.           *)
+(*  Commas, periods, parentheses, and hyphens conflict with      *)
+(*  Jothand sound symbols and must not be used as punctuation.  *)
+(* ------------------------------------------------------------- *)
+
+safe-punctuation = "!" | "?" ;
+
+
+(* ------------------------------------------------------------- *)
+(*  Ambiguity note                                                *)
+(*                                                               *)
+(*  The following tokens have overlapping interpretations.       *)
+(*  The grammar admits both; context determines meaning.         *)
+(*                                                               *)
+(*    ɑ  — at-sound (in phonetic-word) OR at/that/they (word-abbrev)  *)
+(*    +  — nd/nt blend (in phonetic-word) OR and (word-abbrev)        *)
+(*    s  — plain English s OR is/as (word-abbrev)                     *)
+(*    r  — plain English r OR or/our/hour (word-abbrev)               *)
+(*    n  — plain English n OR in/on (word-abbrev)                     *)
+(*    t  — th sound (sound-sym) OR plain English t                    *)
+(*                                                               *)
+(*  This ambiguity is intentional. The writer chooses the level  *)
+(*  of compression appropriate for the context.                  *)
+(* ------------------------------------------------------------- *)
