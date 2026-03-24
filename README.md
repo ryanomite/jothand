@@ -82,7 +82,7 @@ Most consonants are written normally. The following sounds use special shortened
 
 > **Note:** When the shorthand form of a sound is no shorter than the original letter, prefer the original. For example, `q` already represents the k+w sound in English and should be kept as `q` rather than written as `c◡`.
 
-## Common Word Abbreviations
+## Common Word Abbreviations (Briefs)
 
 These whole-word substitutions are used for very common words.
 
@@ -98,7 +98,9 @@ These whole-word substitutions are used for very common words.
 | at / that / they | `ɑ` | Context determines meaning |
 | all / every / any quantity | `∀` | Also used for general or unknown quantities: *some*, *many*, *everything*, *lots*, etc. Context determines specific meaning. |
 | and | `+`, `&`, or `&&` | `+` also overlaps with the nd/and blend |
-| not/no/none | `∅` or `!` or `^` | |
+| not / no / none | `∅` or `!` or `^` | |
+| change(s) / difference | `Δ` | |
+| therefore / thus / and so | `∴` | A right arrow (`→`) can also be used |
 
 ## Phonetic Number and Symbol Substitutions
 
@@ -200,7 +202,7 @@ In the examples below, two spaces separate words or groups where clarity is need
 
 I first encountered *Wesley’s Short-cut Shorthand* around 1990, in a Colorado elementary school library. I quickly adopted a number of its underlying ideas - what I could learn and remember in the two weeks before my book was due back - especially its simplified approach compared to more formal systems such as Gregg shorthand.
 
-Over time, I modified the system for my own use, dropped some features, and introduced new ones. The version documented here reflects a personally developed shorthand that has been used in practice for more than three decades.
+Over time, I modified the system for my own use, dropped some features, and introduced new ones (I'm a longtime software engineer, so you'll probably notice a few symbols brought in from programming languages and mathematics). The version documented here reflects a personally developed shorthand that has been used in practice for more than three decades.
 
 ## License
 
