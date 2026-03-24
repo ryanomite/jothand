@@ -15,7 +15,7 @@ The system also includes a set of single-character word abbreviations for common
 
 ## What Makes Jothand Different
 
-Unlike formal shorthand systems, Jot is not meant to replace all written English. It is a system of optional shortcuts that can be inserted into normal writing wherever the user chooses.
+Unlike formal shorthand systems, Jot is not meant to replace all written English. It is a set of optional shortcuts that can be inserted into normal writing wherever the user chooses. Users can adopt as much or as little of Jot as they like, making the learning curve gentle and gradual.
 
 It is especially useful for:
 
@@ -140,21 +140,23 @@ Jothand assumes that many omitted elements can be recovered from context. In pra
 - distinctions such as `is` vs `as`, or `at` vs `that`
 - whether a symbol is part of a chain or a separate word
 
-Because the system is intended for practical note-taking, readability depends on familiarity, surrounding words, and the writer’s judgment.## Ambiguity
+Because the system is intended for practical note-taking, readability depends on familiarity, surrounding words, and the writer’s judgment.
 
-Jot tolerates more ambiguity than formal systems like Gregg shorthand. This is by design: the system is personal, and the writer always has the option to write more clearly when context demands it.
+## Ambiguity
 
-In a chain like `2br∅2bɑse`, the non-alphabetical characters make it reasonably clear that a sequence of word abbreviations is being used. But in plainer sequences, ambiguity can arise. For example, `be` could be read as:
+Jot allows more ambiguity than formal systems like Gregg. This is by design: the system is personal, and the writer always has the option to write more clearly when context demands it.
 
-- plain English: *be*
-- a phonetic abbreviation: *bear*, *bill*, *by*, etc. (consonants only, vowel inferred)
-- two chained word abbreviations: *b* (be) + *e* (the) → **be the**
+In a chain like `2br∅2bɑse` ("to be or not to be that is the..."), the non-alphabetical characters make it reasonably clear that a sequence of word abbreviations is being used. But in plainer sequences, ambiguity can arise. For example, `by` could be read as:
+
+- plain English: *by*
+- a Jot shortcut: *bayou* (consonants only, vowels inferred)
+- two chained word abbreviations: *b* (be) + *y* (you) → **be you**
 
 The writer must decide how much to compress based on whether the result will be recoverable from context. There is no rule that forces abbreviation; using full words or partial abbreviations where needed is always the right choice.
 
 ## What Jothand Does Not Use
 
-Jothand deliberately leaves out several features found in more formal shorthand systems:
+Jot deliberately leaves out several features found in more formal shorthand systems:
 
 - capitalization
 - explicit vowel markers
