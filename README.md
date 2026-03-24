@@ -34,9 +34,9 @@ Because it is hybrid, proper names, numbers, and any material where clarity matt
 3. **Mostly phonetic** — Words are compressed by emphasizing consonants and consonant blends.
 4. **No vowel markers** — Vowels are usually omitted and recovered from context.
 5. **No modifiers** — The system does not depend on extra dots, ticks, shading, or positional rules.
-6. **Whole-word abbreviations** — Common words can be written with a single letter or symbol.
+6. **Whole-word abbreviations (briefs)** — Common words can be written with a single letter or symbol.
 7. **Phrase chaining** — Abbreviations can be combined to represent common short phrases.
-8. **Plain-text friendly** — The system can be documented digitally using standard Unicode characters and symbols.
+8. **Plain-text friendly** — The system can be documented digitally using standard Unicode characters and symbols. We've included a [grammar](grammar/jothand.ebnf) and open-source translator - both of which AIs can use to read/write Jothand.
 9. **Preserve boundary vowels** — Words that begin or end with a prominent vowel sound are often clearer when the vowel is written out. For example, write `only` rather than `_l`, and `i⏐.lf` rather than `⏐.lf` for "itself."
 
 ## Categories of Jothand Forms
@@ -196,7 +196,7 @@ In the examples below, two spaces separate words or groups where clarity is need
 
 ## Background
 
-I first encountered *Wesley’s Short-cut Shorthand* around 1990, in an elementary school library. I quickly adopted a number of its underlying ideas - what I could learn and remember in the two weeks before my book was due back - especially its simplified approach compared to more formal systems such as Gregg shorthand.
+I first encountered *Wesley’s Short-cut Shorthand* around 1990, in a Colorado elementary school library. I quickly adopted a number of its underlying ideas - what I could learn and remember in the two weeks before my book was due back - especially its simplified approach compared to more formal systems such as Gregg shorthand.
 
 Over time, I modified the system for my own use, dropped some features, and introduced new ones. The version documented here reflects a personally developed shorthand that has been used in practice for more than three decades.
 
