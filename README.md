@@ -108,7 +108,7 @@ Some words can be shortened using numerals or symbols that match their sound.
 |---|---:|---|
 | one | `1` | |
 | to / two | `2` | |
-| for / four | `∠` | |
+| for / four | `∠` | A normal "4" also works, but the single-stroke version is preferred |
 | ate / eight | `8` | |
 | number | `#` | |
 | money / dollar / cost | `$` | |
