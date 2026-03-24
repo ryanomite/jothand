@@ -91,10 +91,10 @@ These whole-word substitutions are used for very common words.
 | the | `e` | |
 | of | `u` | |
 | in/one | `n` | |
-| a / an | it | `'` | Apostrophe |
+| a / an / it | `'` | Apostrophe |
 | you | `y` | |
 | is / as | `s` | Context determines meaning |
-| or / our / hour | `r` or `||` | Context determines meaning |
+| or / our / hour | `r` or `\|\|` | Context determines meaning |
 | at / that / they | `ɑ` | Context determines meaning |
 | all / every / any quantity | `∀` | Also used for general or unknown quantities: *some*, *many*, *everything*, *lots*, etc. Context determines specific meaning. |
 | and | `+`, `&`, or `&&` | `+` also overlaps with the nd/and blend |
@@ -115,8 +115,10 @@ Some words can be shortened using numerals or symbols that match their sound.
 | percent / percentage | `%` | |
 | equal / equals | `=` | Also works for *equivalent*, *same*, *even* |
 | approximately / roughly / circa | `~` | |
-| greater/more (than) | `>` | |
-| less/fewer (than) | `<` | |
+| greater / more (than) | `>` | |
+| less / fewer (than) | `<` | |
+| raise / increase | `↑` | |
+| lower / reduce | `↓` | |
 
 ## Chained Abbreviations
 
@@ -181,7 +183,7 @@ In the examples below, two spaces separate words or groups where clarity is need
 |---|---|
 | All the things | `∀e  t,˙` |
 | Man of the people | `⌒_  ue  ppl` |
-| Now is the time | `_  se  |⌒` |
+| Now is the time | `_  se  ⏐⌒` |
 | Mary is not one of the 26 people chosen | `Mary  s∅1ue  26  ppl  (˙_` |
 | To be or not to be, that is the question | `2br∅2bɑse  q.⏐,` |
 | I have a dream | `I hv ' dr⌒` |
